@@ -1,25 +1,7 @@
-## Browser application
+## logseq-dotnet-wasm
 
-## Build
+Experiment writing a [logseq](https://logseq.com/) plugin using dotnet C# WASM.
 
-You can build the applcation from Visual Studio or by dotnet cli
+You can read about it on my blog "[Write Logseq plugins in WebAssembly using .NET and C#](https://laurentkempe.com/2022/10/12/write-logseq-plugins-in-webassembly-using-dotnet-and-csharp/)"
 
-```
-dotnet build -c Debug/Release -r browser-wasm
-```
-
-After building the application, the result is in the `bin/$(Configuration)/net7.0/browser-wasm/AppBundle` directory.
-
-## Run
-
-You can build the applcation from Visual Studio or by dotnet cli
-
-```
-dotnet run -c Debug/Release -r browser-wasm
-```
-
-Or you can start any static file server from the AppBundle directory
-
-```
-dotnet serve -d:bin/$(Configuration)/net7.0/browser-wasm/AppBundle
-```
+![Logseq plugin in WebAssembly using .NET and C# working](https://laurentkempe.com/images/logseq-dotnet-wasm-plugin-working.gif)

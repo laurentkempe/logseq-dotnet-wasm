@@ -1,0 +1,11 @@
+{
+    "name": "logseq-slash-dotnetwasm",
+    "version": "0.0.1",
+    "description": ".NET WASM slash command.",
+    "main": "index.html",
+    "author": "Laurent Kempé",
+    "license": "MIT",
+    "logseq": {
+      "id": "logseq-slash-dotnetwasm"
+    }
+  }

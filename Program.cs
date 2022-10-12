@@ -8,11 +8,11 @@ public partial class MyClass
     [JSExport]
     internal static string Greeting()
     {
-        var text = $"Hello, World! Greetings from {GetHRef()}";
+        var text = $"Hello {Guest()}! Greetings from .NET C# Wasm";
         Console.WriteLine(text);
         return text;
     }
 
-    [JSImport("window.location.href", "main.js")]
-    internal static partial string GetHRef();
+    [JSImport("guest", "main.js")]
+    internal static partial string Guest();
 }

@@ -11,18 +11,29 @@ const { setModuleImports, getAssemblyExports, getConfig, runMainAndExit } = awai
     .withApplicationArgumentsFromQuery()
     .create();
 
+// Called by C# WASM Guest() method
 setModuleImports("main.js", {
-    window: {
-        location: {
-            href: () => globalThis.window.location.href
-        }
-    }
+    guest: () => "logseq"
 });
 
-const config = getConfig();
-const exports = await getAssemblyExports(config.mainAssemblyName);
-const text = exports.MyClass.Greeting();
-console.log(text);
+function main () {
+    logseq.Editor.registerSlashCommand(
+      '🫥 .NET WASM',
+      async () => {
+        // Calling into .NET WASM
+        const text = exports.MyClass.Greeting()
+  
+        logseq.App.showMsg(`
+          [:div.p-2
+            [:h2.text-xl "${text}"]]
+        `)
+      }
+    )
+  }
 
-document.getElementById("out").innerHTML = `${text}`;
+const config = getConfig()
+const exports = await getAssemblyExports(config.mainAssemblyName)
+
+logseq.ready(main).catch(console.error)
+
 await runMainAndExit(config.mainAssemblyName, ["dotnet", "is", "great!"]);
